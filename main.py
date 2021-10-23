@@ -16,6 +16,13 @@ def addFile():
 
 def deleteFile():
     os.remove(FILE__PATH)
+    
+def stageChanges():
+    os.system('git add .')
+
+def commitChanges():
+    os.system('git commit --date="%s" --no-edit -m "Fake Commit"' %
+              (commitDate))
 
 if __name__ == '__main__':
     dateObj1 = datetime.strptime('Jun 1 2019  1:33PM', '%b %d %Y %I:%M%p')
@@ -24,6 +31,5 @@ if __name__ == '__main__':
         deleteFile()
     else:
         addFile()
-
-    os.system('git add .')
-    os.system('git commit --date="%s" --no-edit -m "Fake Commit"' % (commitDate))
+    stageChanges()
+    commitChanges()
