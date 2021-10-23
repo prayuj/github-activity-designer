@@ -16,9 +16,13 @@ def addFile():
 
 def deleteFile():
     os.remove(FILE__PATH)
-    
+
+def stashStagedChanges():
+    os.system('git stash')
+
+
 def stageChanges():
-    os.system('git add .')
+    os.system('git add %s' % (FILE__PATH))
 
 def commitChanges():
     os.system('git commit --date="%s" --no-edit -m "Fake Commit"' %
@@ -31,5 +35,7 @@ if __name__ == '__main__':
         deleteFile()
     else:
         addFile()
+        
+    stashStagedChanges()
     stageChanges()
     commitChanges()
